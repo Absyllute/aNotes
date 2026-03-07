@@ -21,8 +21,29 @@ class AnNotesState extends State<Anotes> {
       
       theme: ThemeData(
         fontFamily: 'Quicksand',
-
         scaffoldBackgroundColor: Colours.secondaryColour,
+
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colours.primaryColour,
+          foregroundColor: Colors.white,
+          splashColor: Colours.secondaryColour
+        ),
+
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: Colours.primaryColour,
+
+          hintStyle: TextStyle(
+            fontFamily: 'Outfit',
+            color: Colors.white.withAlpha(150),
+            fontSize: 18
+          ),
+
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(15)
+          ),
+        )
       ),
     );
   }
