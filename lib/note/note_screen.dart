@@ -50,9 +50,55 @@ class _NoteScreenState extends State<NoteScreen> {
                     color: Colors.white
                   ),
                 ),
+              ),
+
+
+              SizedBox(height: 8),
+
+
+              Row(
+                textDirection: TextDirection.rtl,
+                children: [
+                  Expanded(
+                    flex: 7,
+                    
+                    child: ElevatedButton(
+                      onPressed: () {
+                        
+                      },
+                      child: Text(
+                        'Save Note',
+                        style: TextStyle(
+                          fontSize: 20
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 8),
+
+                  Expanded(
+                    flex: 3,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // clear text, but dont distroy controller
+                      },
+
+                      child: Text(
+                        'Discard',
+                        style: TextStyle(
+                          fontSize: 18
+                        ),
+                      )
+                    )
+                  )
+
+                ],
               )
             ],
           ),
+
+
         ),
       ),
     );

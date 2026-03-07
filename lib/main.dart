@@ -43,6 +43,13 @@ class AnNotesState extends State<Anotes> {
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(15)
           ),
+        ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colours.primaryColour,
+            foregroundColor: Colors.white
+          )
         )
       ),
     );
