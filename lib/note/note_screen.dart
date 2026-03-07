@@ -87,6 +87,8 @@ class _NoteScreenState extends State<NoteScreen> {
                       child: Text(
                         'Discard',
                         style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0,
                           fontSize: 18
                         ),
                       )

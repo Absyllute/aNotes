@@ -23,6 +23,12 @@ class AnNotesState extends State<Anotes> {
         fontFamily: 'Quicksand',
         scaffoldBackgroundColor: Colours.secondaryColour,
 
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: CupertinoPageTransitionsBuilder()
+          }
+        ),
+
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Colours.primaryColour,
           foregroundColor: Colors.white,
