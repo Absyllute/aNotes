@@ -39,6 +39,12 @@ class AnNotesState extends State<Anotes> {
           }
         ),
 
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colours.primaryColour,
+          foregroundColor: Colors.white,
+          centerTitle: true,
+        ),
+
         dividerTheme: DividerThemeData(
           color: Colours.secondaryColour,
           thickness: 6,

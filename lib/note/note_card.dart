@@ -36,12 +36,17 @@ class NoteCard extends StatelessWidget {
       
             Divider(),
       
-            Text(
-              noteData.noteContent,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500
+            Expanded(
+              child: Text(
+                noteData.noteContent,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+                softWrap: true,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             )
           ],

@@ -38,8 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
           List<NoteData> savedNotesList = savedNotes.values.toList().reversed.toList();
 
           return GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 250
             ),
             itemCount: savedNotesList.length,
             itemBuilder: (context, index) {

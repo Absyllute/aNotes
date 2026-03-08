@@ -26,6 +26,17 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyActions: false,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'New Note',
+          style: TextStyle(
+            fontFamily: 'Outfit'
+          ),
+        ),
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(10),
@@ -107,7 +118,7 @@ class _NoteScreenState extends State<NoteScreen> {
                     flex: 3,
                     child: ElevatedButton(
                       onPressed: () {
-                        // clear text, but dont distroy controller
+                        Navigator.pop(context);
                       },
 
                       child: Text(
