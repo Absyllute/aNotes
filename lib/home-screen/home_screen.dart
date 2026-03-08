@@ -1,3 +1,4 @@
+import 'package:anotes/note/edit_note.dart';
 import 'package:anotes/note/note_card.dart';
 import 'package:anotes/note/note_data.dart';
 import 'package:anotes/note/note_screen.dart';
@@ -35,7 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ValueListenableBuilder(
         valueListenable: savedNotesBox.listenable(),
         builder: (context, savedNotes, child) {
-          List<NoteData> savedNotesList = savedNotes.values.toList().reversed.toList();
+
+          List<NoteData> savedNotesList = savedNotes.values.toList();
+          List savedNotesKey = savedNotes.keys.toList();
 
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -43,7 +46,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             itemCount: savedNotesList.length,
             itemBuilder: (context, index) {
-              return NoteCard(noteData: savedNotesList[index]);
+              return NoteCard(
+                noteData: savedNotesList[index],
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditNote(
+                        index: savedNotesKey[index],
+                        noteData: savedNotesList[index]
+                      ),
+                    )
+                  );
+                },
+              );
             },
           );
         },
