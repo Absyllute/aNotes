@@ -1,5 +1,8 @@
+import 'package:anotes/note/note_card.dart';
+import 'package:anotes/note/note_data.dart';
 import 'package:anotes/note/note_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,6 +31,23 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icon(Icons.add),
         label: Text('New Note'),
       ),
+
+      body: ValueListenableBuilder(
+        valueListenable: savedNotesBox.listenable(),
+        builder: (context, savedNotes, child) {
+          List<NoteData> savedNotesList = savedNotes.values.toList().reversed.toList();
+
+          return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2
+            ),
+            itemCount: savedNotesList.length,
+            itemBuilder: (context, index) {
+              return NoteCard(noteData: savedNotesList[index]);
+            },
+          );
+        },
+      )
     );
   }
 }

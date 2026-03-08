@@ -1,4 +1,6 @@
+import 'package:anotes/note/note_data.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class NoteScreen extends StatefulWidget {
   const NoteScreen({super.key});
@@ -7,7 +9,20 @@ class NoteScreen extends StatefulWidget {
   State<NoteScreen> createState() => _NoteScreenState();
 }
 
+var savedNotesBox = Hive.box<NoteData>('savedNotesBox');
+
 class _NoteScreenState extends State<NoteScreen> {
+
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _contentController = TextEditingController(); 
+
+  @override
+  void dispose() { 
+    _titleController.dispose();
+    _contentController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +32,8 @@ class _NoteScreenState extends State<NoteScreen> {
           child: Column(
             children: [
               TextField(
+
+                controller: _titleController,
                 cursorColor: Colors.white,
 
                 style: TextStyle(
@@ -39,6 +56,7 @@ class _NoteScreenState extends State<NoteScreen> {
                   expands: true,
                   textAlignVertical: TextAlignVertical.top,
                   cursorColor: Colors.white,
+                  controller: _contentController,
 
                   decoration: InputDecoration(
                     hintText: 'Note'
@@ -64,7 +82,15 @@ class _NoteScreenState extends State<NoteScreen> {
                     
                     child: ElevatedButton(
                       onPressed: () {
-                        
+                        if (_titleController.text.isNotEmpty && _contentController.text.isNotEmpty) {
+                          savedNotesBox.add(
+                            NoteData(
+                              noteTitle: _titleController.text,
+                              noteContent: _contentController.text
+                            )
+                          );
+                        }
+                        Navigator.pop(context);
                       },
                       child: Text(
                         'Save Note',
@@ -94,13 +120,10 @@ class _NoteScreenState extends State<NoteScreen> {
                       )
                     )
                   )
-
                 ],
               )
             ],
           ),
-
-
         ),
       ),
     );

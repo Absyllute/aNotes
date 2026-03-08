@@ -1,8 +1,18 @@
 import 'package:anotes/home-screen/home_screen.dart';
+import 'package:anotes/note/note_data.dart';
 import 'package:anotes/themes/colours.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(NoteDataAdapter());
+
+  await Hive.openBox<NoteData>('savedNotesBox');
+
   runApp(const Anotes());
 }
 
@@ -27,6 +37,14 @@ class AnNotesState extends State<Anotes> {
           builders: {
             TargetPlatform.android: CupertinoPageTransitionsBuilder()
           }
+        ),
+
+        dividerTheme: DividerThemeData(
+          color: Colours.secondaryColour,
+          thickness: 6,
+          radius: BorderRadius.circular(6),
+          endIndent: 5,
+          indent: 5
         ),
 
         floatingActionButtonTheme: FloatingActionButtonThemeData(
