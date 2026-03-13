@@ -1,2 +1,2 @@
 # aNotes
-some notes app or something idk
+some notes and to-do list app or something idk
