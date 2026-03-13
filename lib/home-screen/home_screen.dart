@@ -59,6 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   );
                 },
+
+                onDelete: () {
+                  Navigator.pop(context);
+                  savedNotesBox.delete(savedNotesKey[index]);
+                },
               );
             },
           );
