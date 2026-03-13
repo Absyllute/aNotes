@@ -24,11 +24,11 @@ class NoteOption extends StatelessWidget {
         child: Container(
           
           width: double.infinity,
-          constraints: BoxConstraints(maxWidth: 200),
+          constraints: BoxConstraints(maxWidth: 220),
       
           decoration: BoxDecoration(
             color: Colours.secondaryColour,
-            borderRadius: BorderRadius.circular(15)
+            borderRadius: BorderRadius.circular(30)
           ),
         
           child: Padding(

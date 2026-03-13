@@ -49,9 +49,12 @@ class NoteCard extends StatelessWidget {
           builder: (context) {
             return Stack(
               children: [
-                BackdropFilter(
-                  filter: ImageFilter.blur( sigmaX: 3, sigmaY: 3 ),
-                  child: Container( color: Colors.black.withAlpha(10) ),
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur( sigmaX: 3, sigmaY: 3 ),
+                    child: Container( color: Colors.black.withAlpha(10) ),
+                  ),
                 ),
 
                 Center(
